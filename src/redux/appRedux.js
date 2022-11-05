@@ -2,6 +2,7 @@
 const ADD_TODO = "ADD_TODO";
 const COMPLETE_TODO = "COMPLETE_TODO";
 const DELETE_TODO = "DELETE_TODO";
+const SET_PAGE_NAME = "SET_PAGE_NAME"
 
 //state inicial
 const stateInitial = {
@@ -17,6 +18,10 @@ export const appSelector = {
 
 //actions
 export const appActions = {
+    setPageTitle: (title)=> ({
+        type: SET_PAGE_NAME,
+        title,
+    }),
     addTodo: (payload) => ({
         type: ADD_TODO,
         payload,
@@ -34,6 +39,11 @@ export const appActions = {
 //reducer
 export const appReducer = (state = stateInitial, action) => {
     switch(action.type){
+        case SET_PAGE_NAME:
+            return{
+                ...state,
+                pageTitle: action.title
+            }
         case ADD_TODO:
             return{
                 ...state,
